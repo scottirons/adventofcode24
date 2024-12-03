@@ -5,6 +5,8 @@ mkdir day$1
 
 cd day$1
 
-touch day$1.py
-touch input.txt
-touch test.txt
+touch solve.py input.txt test.txt
+
+code -r solve.py input.txt test.txt
+
+echo "Opened day$1.py, input.txt, and test.txt in VS Code!"
