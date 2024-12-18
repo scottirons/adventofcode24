@@ -1,4 +1,6 @@
 import re
+import time
+from time import perf_counter
 
 class Solution:
     def __init__(self, source):
@@ -78,9 +80,11 @@ class Solution:
                 self.pointer = 0
                 self.result = []
 
+start = time.perf_counter()
 sol = Solution('input.txt')
 a = sol.solve_a()
 print(f"Part A: {a}")
 b = sol.solve_b()
 print(f"Part B: {b}")
+print(f"Time: {time.perf_counter() - start}")
 # 3,2,3,0,2,4,1,5,3
