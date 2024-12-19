@@ -1,4 +1,5 @@
-from collections import defaultdict
+from functools import cache
+from time import perf_counter
 
 class Solution:
     def __init__(self, source):
@@ -7,11 +8,9 @@ class Solution:
         self.shirts = shirts.split(', ')
         self.max = max(len(shirt) for shirt in self.shirts)
         self.patterns = patterns.split('\n')
-        self.memo = {}
 
+    @cache
     def is_valid(self, pattern):
-        if pattern in self.memo:
-            return self.memo[pattern]
         if not pattern:
             return 1
 
@@ -23,7 +22,6 @@ class Solution:
                 break
             if curr in self.shirts:
                 total_combinations += self.is_valid(pattern[i + 1:])
-        self.memo[pattern] = total_combinations
         return total_combinations
 
 
@@ -38,7 +36,9 @@ class Solution:
                 part_a += 1
         return part_a, part_b
 
+start = perf_counter()
 sol = Solution('input.txt')
 a, b = sol.solve()
 print(f"Part A: {a}")
 print(f"Part B: {b}")
+print(f"Total Time: {perf_counter() - start}")
