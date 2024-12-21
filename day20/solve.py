@@ -1,4 +1,5 @@
 from collections import deque, defaultdict
+import re
 
 class Solution:
     def __init__(self, source):
@@ -70,12 +71,12 @@ class Solution:
                 if diff <= 20:
                     first, second = steps_dict[path[i]], steps_dict[path[j]]
                     saved = first - second - diff
-                    if saved >= 100:
+                    if saved >= 50:
                         b += 1
         return a, b
 
 
-sol = Solution('input.txt')
+sol = Solution('test.txt')
 a, b = sol.solve_both()
 print(f"Part A: {a}")
 print(f"Part B: {b}")
