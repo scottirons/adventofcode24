@@ -1,7 +1,9 @@
 from collections import deque, defaultdict
+from time import perf_counter
 
 MOD = 16777216
 
+start = perf_counter()
 with open('input.txt', 'r') as f:
     nums = [int(num) for num in f.read().splitlines()]
 
@@ -43,3 +45,4 @@ for num in nums:
 print(total_a)
 print(b_max)
 print(best_seq)
+print(f"time taken: {perf_counter() - start}")
